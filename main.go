@@ -95,7 +95,7 @@ func main() {
 				Flags: append(globalFlags,
 					altsrc.NewStringFlag(&cli.StringFlag{
 						Name:  "token",
-						Usage: "Specify your PAT",
+						Usage: "Specify your Secret Token",
 					}),
 					&cli.StringFlag{
 						Name:  "file",
@@ -118,6 +118,22 @@ func main() {
 							&cli.StringFlag{
 								Name:  "secret-type",
 								Usage: "provide the secret type.",
+							},
+							&cli.StringFlag{
+								Name:  "port",
+								Usage: "port number for the ssh secret",
+							},
+							&cli.StringFlag{
+								Name:  "username",
+								Usage: "username for the ssh secret",
+							},
+							&cli.StringFlag{
+								Name:  "passphrase",
+								Usage: "passphrase for the ssh secret",
+							},
+							&cli.StringFlag{
+								Name:  "domain",
+								Usage: "domain for cloud data center",
 							},
 						},
 						Action: func(context *cli.Context) error {
@@ -253,6 +269,10 @@ func main() {
 								Name:  "cloud-region",
 								Usage: "region for the cloud connector",
 							},
+							&cli.StringFlag{
+								Name:  "host-ip",
+								Usage: "host ip or fqdn for the physical data center connector",
+							},
 						},
 						Action: func(context *cli.Context) error {
 							return cliWrapper(applyConnector, context)
@@ -293,6 +313,10 @@ func main() {
 							&cli.StringFlag{
 								Name:  "cloud-region",
 								Usage: "provide the Cloud Platform region name. For eg; 1.Creating GCP pipeline then provide gcp-region name, 2.Creating AWS based pipeline then provide aws-region name",
+							},
+							&cli.StringFlag{
+								Name:  "instance-name",
+								Usage: "instance name for the cloud provider for PDC Infrastructure",
 							},
 						},
 						Action: func(context *cli.Context) error {
