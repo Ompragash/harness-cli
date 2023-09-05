@@ -71,10 +71,10 @@ func applyConnector(c *cli.Context) error {
 	if isPdcConnectorYAML(content) {
 		hasPortNumber := strings.Contains(content, HOST_PORT_PLACEHOLDER)
 		if hostIpOrFqdn == "" || hostIpOrFqdn == HOST_IP_PLACEHOLDER {
-			githubUsername = TextInput("Enter valid host ip / fqdn:")
+			hostIpOrFqdn = TextInput("Enter valid host ip / fqdn:")
 		}
 		if hasPortNumber && (hostPort == "" || hostPort == HOST_PORT_PLACEHOLDER) {
-			githubUsername = TextInput("Enter valid host port:")
+			hostPort = TextInput("Enter valid host port:")
 		}
 		if delegateName == "" || delegateName == DELEGATE_NAME_PLACEHOLDER {
 			delegateName = TextInput("Enter valid delegate name:")
