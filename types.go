@@ -137,7 +137,7 @@ type Resource struct {
 }
 
 type ResponseBody struct {
-	Code     string             `json:"code"`
+	Code     interface{}        `json:"code"`
 	Message  string             `json:"message"`
 	Status   string             `json:"status"`
 	Data     interface{}        `json:"data"`
@@ -240,6 +240,16 @@ type HarnessService struct {
 	Tags              struct {
 	} `json:"tags,omitempty"`
 	Yaml string `json:"yaml"`
+}
+
+type Repo struct {
+	Repo           string `json:"repo"`
+	Type           string `json:"type"`
+	Name           string `json:"name"`
+	ConnectionType string `json:"connectionType"`
+}
+type HarnessRepository struct {
+	Repo `json:"repo"`
 }
 
 type HarnessEnvironment struct {
